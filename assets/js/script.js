@@ -44,3 +44,30 @@ document.addEventListener("click", (e) => {
     shoppingCart.classList.remove("active");
   }
 });
+
+// Modal Box
+const itemDetailModal = document.querySelector("#item-detail-modal");
+const productDetailButtons = document.querySelectorAll(
+  ".product-detail-button"
+);
+const closeModalButton = document.querySelector(".modal .close-icon");
+
+productDetailButtons.forEach((productDetailButton) => {
+  productDetailButton.onclick = (e) => {
+    e.preventDefault();
+
+    itemDetailModal.style.display = "flex";
+  };
+});
+
+closeModalButton.onclick = (e) => {
+  e.preventDefault();
+
+  itemDetailModal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target === itemDetailModal) {
+    itemDetailModal.style.display = "none";
+  }
+};
