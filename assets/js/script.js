@@ -20,6 +20,16 @@ navbarSearch.onclick = (e) => {
   searchBox.focus();
 };
 
+// Toggle shopping cart
+const cartButton = document.querySelector("#shopping-cart-button");
+const shoppingCart = document.querySelector(".shopping-cart");
+
+cartButton.onclick = (e) => {
+  e.preventDefault();
+
+  shoppingCart.classList.toggle("active");
+};
+
 // Outside menu click disable menu
 document.addEventListener("click", (e) => {
   if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target)) {
@@ -28,5 +38,9 @@ document.addEventListener("click", (e) => {
 
   if (!navbarSearch.contains(e.target) && !searchForm.contains(e.target)) {
     searchForm.classList.remove("active");
+  }
+
+  if (!shoppingCart.contains(e.target) && !cartButton.contains(e.target)) {
+    shoppingCart.classList.remove("active");
   }
 });
