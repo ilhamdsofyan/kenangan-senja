@@ -125,6 +125,7 @@ body {
   top: 100%;
   right: -100%;
   height: 100vh;
+  height: 100svh;
   width: 35rem;
   padding: 0 1.5rem;
   background-color: #fff;
@@ -173,6 +174,7 @@ body {
 /* Hero Section */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background-image: url(../img/hero.jpg);
@@ -572,6 +574,7 @@ footer .credit a {
     background-color: #fff;
     width: 30rem;
     height: 100vh;
+    height: 100svh;
     transition: 0.3s;
   }
 
