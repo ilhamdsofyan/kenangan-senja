@@ -326,7 +326,7 @@ body {
 /* Product Section */
 .products .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1.5rem;
   margin-top: 4rem;
 }
@@ -382,12 +382,12 @@ body {
   fill: var(--primary);
 }
 
-.product-content .product-price {
+.product-price {
   font-size: 1.3rem;
   font-weight: 700;
 }
 
-.product-content .product-price span {
+.product-price span {
   text-decoration: line-through;
   font-weight: 100;
 }
