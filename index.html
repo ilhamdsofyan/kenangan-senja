@@ -73,9 +73,17 @@
               <h3 x-text="item.name"></h3>
               <div class="item-price">
                 <span x-text="rupiah(item.price)"></span> &times;
-                <button id="remove">&minus;</button>
+                <button
+                  id="remove"
+                  @click.prevent="$store.cart.remove(item.id)"
+                >
+                  &minus;
+                </button>
                 <span x-text="item.quantity"></span>
-                <button id="add">&plus;</button> &equals;
+                <button id="add" @click.prevent="$store.cart.add(item)">
+                  &plus;
+                </button>
+                &equals;
                 <span x-text="rupiah(item.total)"></span>
               </div>
             </div>
@@ -83,6 +91,11 @@
             <i data-feather="trash-2" class="remove-item"></i>
           </div>
         </template>
+
+        <h4 x-show="!$store.cart.items.length">Keranjang masih kosong.</h4>
+        <h4 x-show="$store.cart.items.length">
+          Total: <span x-text="rupiah($store.cart.total)"></span>
+        </h4>
       </div>
       <!-- Shopping Cart End -->
     </nav>

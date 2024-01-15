@@ -18,7 +18,7 @@ document.addEventListener("alpine:init", () => {
         stars: 4,
       },
       {
-        id: 1,
+        id: 3,
         name: "Robusta FilterKaffee",
         img: "assets/img/products/3.jpg",
         price: "40000",
@@ -49,11 +49,34 @@ document.addEventListener("alpine:init", () => {
             item.total = parseInt(item.price) * parseInt(item.quantity);
 
             this.quantity++;
-            this.total += item.price;
+            this.total += parseInt(item.price);
 
             return item;
           }
         });
+      }
+    },
+    remove(id) {
+      const cartItem = this.items.find((item) => item.id === id);
+
+      if (cartItem.quantity > 1) {
+        this.items = this.items.map((item) => {
+          if (item.id != id) {
+            return item;
+          } else {
+            item.quantity--;
+            item.total = parseInt(item.price) * parseInt(item.quantity);
+
+            this.quantity--;
+            this.total -= parseInt(item.price);
+
+            return item;
+          }
+        });
+      } else if (cartItem.quantity === 1) {
+        this.items = this.items.filter((item) => item.id !== id);
+        this.quantity--;
+        this.total -= parseInt(cartItem.price);
       }
     },
   });
