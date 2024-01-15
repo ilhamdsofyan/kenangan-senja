@@ -33,9 +33,28 @@ document.addEventListener("alpine:init", () => {
     total: 0,
     quantity: 0,
     add(newItem) {
-      this.items.push(newItem);
-      this.total += parseInt(newItem.price);
-      this.quantity++;
+      // Check if item already exists
+      const cartItem = this.items.find((item) => item.id === newItem.id);
+
+      if (!cartItem) {
+        this.items.push({ ...newItem, quantity: 1, total: newItem.price });
+        this.total += parseInt(newItem.price);
+        this.quantity++;
+      } else {
+        this.items = this.items.map((item) => {
+          if (item.id !== newItem.id) {
+            return item;
+          } else {
+            item.quantity++;
+            item.total = parseInt(item.price) * parseInt(item.quantity);
+
+            this.quantity++;
+            this.total += item.price;
+
+            return item;
+          }
+        });
+      }
     },
   });
 });
